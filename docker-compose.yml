@@ -1,0 +1,9 @@
+version: '3.7'
+services:
+    pushservice:
+        image: 2clicksolutions/pushservice:0.1
+        container_name: pushservice
+        environment:
+            - SCRAP_INTERVAL=15
+            - EXPORTER_ENDPOINT=http://host.docker.internal:9182/metrics|window_exporter|BISHOP,http://host.docker.internal:9090/metrics|prometheus_job|prometheus
+            - PUSHGATEWAY_SERVER=http://host.docker.internal:9091
