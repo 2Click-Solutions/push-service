@@ -10,12 +10,12 @@ Some envionments need to config:
 > Note that all label will overide the the label in pushgateway
 ## Run by docker
 ```
-docker pull 2clicksolutions/pushservice:1.0
+docker pull 2clicksolutions/pushservice:0.1
 docker run -e pushservice.env 2clicksolutions/pushservice:0.1
 ```
 ## Run by docker-compose
 ```
-docker pull 2clicksolutions/pushservice:1.0
+docker pull 2clicksolutions/pushservice:0.1
 docker-compose up -d
 
 ```
