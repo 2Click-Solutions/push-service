@@ -1,9 +1,12 @@
 version: '3.7'
 services:
     pushservice:
-        image: 2clicksolutions/pushservice:0.1
+        image: 2clicksolutions/pushservice:0.2
         container_name: pushservice
+        restart: always
         environment:
             - SCRAP_INTERVAL=15
-            - EXPORTER_ENDPOINT=http://host.docker.internal:9182/metrics|window_exporter|BISHOP,http://host.docker.internal:9090/metrics|prometheus_job|prometheus
+            - EXPORTER_ENDPOINT=http://host.docker.internal:9182/metrics|window_exporter|my_computer
             - PUSHGATEWAY_SERVER=http://host.docker.internal:9091
+            - BASIC_AUTH_USERNAME=
+            - BASIC_AUTH_PASSWD=
