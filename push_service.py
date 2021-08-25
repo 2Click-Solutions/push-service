@@ -32,11 +32,10 @@ def main():
                     logging.error("Can't get metric from {e}.".format(e=endpoint))
                     continue
                 resp = requests.get(endpoint)
-                response = requests.post('{p}/metrics/job/{j}/instance/{i}'.format(p=PUSHGATEWAY_SERVER, j=job_name, i=instance_name), data=resp.text)
+                response = requests.post('{p}/metrics/job/{j}/instance/{i}'.format(p=PUSHGATEWAY_SERVER, j=job_name, i=instance_name), data=resp.text, auth=HTTPBasicAuth(BASIC_AUTH_USERNAME, BASIC_AUTH_PASSWD))
                 logging.info("Get metrics from {e} and push to Pushgateway.".format(e=endpoint))
             else:
                 logging.error("Invalid exporter endpoint url {e}.".format(e=EXPORTER_ENDPOINT))
         time.sleep(int(SCRAPE_INTERVAL))
 if __name__ == '__main__':
     main()
-
