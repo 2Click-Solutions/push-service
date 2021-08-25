@@ -5,7 +5,7 @@ services:
         container_name: pushservice
         restart: always
         environment:
-            - SCRAP_INTERVAL=15
+            - SCRAPE_INTERVAL=15
             - EXPORTER_ENDPOINT=http://host.docker.internal:9182/metrics|window_exporter|my_computer
             - PUSHGATEWAY_SERVER=http://host.docker.internal:9091
             - BASIC_AUTH_USERNAME=

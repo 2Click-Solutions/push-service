@@ -6,7 +6,7 @@ import validators
 import sys
 from requests.auth import HTTPBasicAuth
 
-SCRAP_INTERVAL = os.getenv('SCRAP_INTERVAL', 30)
+SCRAPE_INTERVAL = os.getenv('SCRAPE_INTERVAL', 30)
 EXPORTER_ENDPOINT = os.getenv('EXPORTER_ENDPOINT', 'http://host.docker.internal:9182/metrics|job1|instance1')
 PUSHGATEWAY_SERVER = os.getenv('PUSHGATEWAY_SERVER', 'http://host.docker.internal:9091')
 BASIC_AUTH_USERNAME = os.getenv('BASIC_AUTH_USERNAME', '')
@@ -36,7 +36,7 @@ def main():
                 logging.info("Get metrics from {e} and push to Pushgateway.".format(e=endpoint))
             else:
                 logging.error("Invalid exporter endpoint url {e}.".format(e=EXPORTER_ENDPOINT))
-        time.sleep(int(SCRAP_INTERVAL))
+        time.sleep(int(SCRAPE_INTERVAL))
 if __name__ == '__main__':
     main()
 

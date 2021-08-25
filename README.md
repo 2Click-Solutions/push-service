@@ -5,16 +5,16 @@ This service for collecting metrics from machine/exporter in internal network an
 ![GitHub Logo](/push-service.png)
 
 ## Some envionments need to config:
-| Enviroment variable | Description | Default value|
+| Environment variables | Description | Default value|
 | ------ | ------ |-----|
-|SCRAP_INTERVAL|scrap time interval|  30s |
+|SCRAPE_INTERVAL|scrape time interval|  30s |
 |PUSHGATEWAY_SERVER|Pushgateway server url|http://host.docker.internal:9091|
 |BASIC_AUTH_USERNAME|Pushgateway server basic authentication username|None|
 |BASIC_AUTH_PASSWD|Pushgateway server basic authentication password|None|
 |EXPORTER_ENDPOINT|array exporter endpoint with format ```endpoint_url|job|instance``` separate by comma ',' |http://host.docker.internal:9182/metrics|job1|instance1|
 
 > For example:\
-> EXPORTER_ENDPOINT=http://host.docker.internal:9182/metrics|window_exporter_job|my_computer,http://host.docker.internal:9090/metrics|prometheus_job|prometheus\
+> EXPORTER_ENDPOINT=http://host.docker.internal:9182/metrics|window_exporter_job|my_computer,http://host.docker.internal:9090/metrics|prometheus_job|prometheus
 ## Run by docker
 ```
 docker pull 2clicksolutions/pushservice:0.2
