@@ -1,7 +1,7 @@
 version: '3.7'
 services:
     pushservice:
-        image: 2clicksolutions/pushservice:0.2
+        image: 2clicksolutions/pushservice:0.3
         container_name: pushservice
         restart: always
         environment:

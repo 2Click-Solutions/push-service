@@ -27,13 +27,14 @@ def main():
             endpoint, job_name, instance_name = e.split('|')
             if ((validators.url(endpoint)) == True):
                 try:
-                    requests.get(endpoint).status_code == 200
+                    resp = requests.get(endpoint)
+                    resp.status_code == 200
+                    logging.info("Just get metrics from {e}.".format(e=endpoint))
                 except:
                     logging.error("Can't get metric from {e}.".format(e=endpoint))
                     continue
-                resp = requests.get(endpoint)
                 response = requests.post('{p}/metrics/job/{j}/instance/{i}'.format(p=PUSHGATEWAY_SERVER, j=job_name, i=instance_name), data=resp.text, auth=HTTPBasicAuth(BASIC_AUTH_USERNAME, BASIC_AUTH_PASSWD))
-                logging.info("Get metrics from {e} and push to Pushgateway.".format(e=endpoint))
+                logging.info("Just push to Pushgateway.")
             else:
                 logging.error("Invalid exporter endpoint url {e}.".format(e=EXPORTER_ENDPOINT))
         time.sleep(int(SCRAPE_INTERVAL))
